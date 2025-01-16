@@ -1,0 +1,44 @@
+
+Features include:
+1. Age Progression
+Players will age over time.
+Every 10 seconds (200 ticks), the player's age will increase by 1 year.
+The player receives a message every time their age increases (e.g., "You are now X years old!").
+2. Marriage System
+Players can toggle their marital status with other players.
+Marriage:
+If a player marries another player, a message will confirm the marriage (e.g., "You are now married to [partner name]").
+Players can marry by using the toggleMarriage(player, partnerName) function.
+Divorce:
+If a player is already married, using the same function will result in a divorce (e.g., "You are now divorced.").
+The marital status will reset, and the player will no longer be married to anyone.
+3. Health Decline Over Time
+Player health decreases by 1 every 10 seconds (200 ticks).
+A player's health will be displayed in the chat every time it decreases (e.g., "Your health is now: [health amount]").
+Health starts at 100 by default, but it will decrease as time passes.
+If the player's health reaches 0, they are effectively "unwell" or "dead" (you could further expand the system to implement consequences for having 0 health).
+4. Player Alive Check
+Alive Status: The script keeps track of the player’s health and determines whether they are "alive" based on the health value.
+Health below 1 means the player would be considered "dead" (though additional actions could be added, like respawning or a death event).
+5. Player Join Event
+When a player joins the world, their data is initialized.
+Age: The player starts with an age of 0.
+Marriage Status: The player starts with no marriage (null).
+Health: The player starts with 100 health points.
+This initialization ensures each player starts with a fresh life simulation state when joining the game.
+6. Automatic Updates (via Ticks)
+The tick event updates players every 10 seconds.
+This updates both age and health over time (age increases, and health decreases).
+The updates occur continuously while the world is running, making the life simulation dynamic.
+7. Interaction via Commands (Optional)
+You could extend this system by creating custom commands to trigger specific actions (like marriage, aging, or health checks) directly from the in-game chat.
+For example, players might use /marry [playerName] to marry another player, or /age to manually increment their age.
+8. Customizable Time Intervals
+The system uses a time-based approach (every 200 ticks), which can be customized to fit your needs. You could adjust how often the age progresses or health decreases.
+
+STEPS TO IMPLEMENT:
+Manifest File: Ensure you have the correct manifest.json file in your behavior pack to link the script.
+Add the Behavior Pack: Add the script as a behavior pack in your Minecraft Bedrock world.
+Enable Experimental Gameplay: Enable Experimental Gameplay to allow custom scripts.
+
+NOTE -- this has not been tested. I recommend making a backup of Minecraft.
