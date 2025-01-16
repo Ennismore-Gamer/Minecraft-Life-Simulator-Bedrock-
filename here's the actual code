@@ -1,0 +1,46 @@
+// LifeSimulator.js
+
+let ageData = {};
+let marriageData = {};
+let healthData = {};
+
+// Function to increment age of a player
+function incrementAge(player) {
+    const playerName = player.name;
+    let age = ageData[playerName] || 0;
+    ageData[playerName] = age + 1;
+
+    // Send a message to the player with their age
+    player.tell("You are now " + ageData[playerName] + " years old!");
+}
+
+// Function to toggle marriage status between two players
+function toggleMarriage(player, partnerName) {
+    const playerName = player.name;
+    if (playerName === partnerName) {
+        player.tell("You cannot marry yourself!");
+        return;
+    }
+
+    // Get marriage status for player
+    if (marriageData[playerName] === partnerName) {
+        // If already married, divorce
+        marriageData[playerName] = null;
+        player.tell("You are now divorced.");
+    } else {
+        // If not married, get married
+        marriageData[playerName] = partnerName;
+        player.tell("You are now married to " + partnerName);
+    }
+}
+
+// Function to decrease health over time
+function decreaseHealth(player) {
+    const playerName = player.name;
+    let health = healthData[playerName] || 100;
+
+    if (health > 0) {
+        health -= 1; // Decrease health by 1
+    }
+
+    healthData[playerName] 
